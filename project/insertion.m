@@ -6,11 +6,10 @@ function NewChrom = insertion(OldChrom,Representation)
 NewChrom=OldChrom;
 
 if Representation==1 
+    OldChrom = adj2path(OldChrom);
 	NewChrom=adj2path(NewChrom);
 end
-NewChrom
 % select two positions in the tour
-
 rndi=zeros(1,2);
 
 while rndi(1)==rndi(2)
@@ -20,7 +19,7 @@ end
 %NewChrom(rndi(1):rndi(2)) = NewChrom(rndi(2):-1:rndi(1));
 %NewChrom(rndi(1))=NewChrom(rndi(2));
 %NewChrom(rndi(2))=buffer;
-to_left = rndi(1)<rndi(2);
+to_left = rndi(1)<rndi(2)
 for i=min(rndi):max(rndi)
     if i==rndi(2)
         NewChrom(i)=OldChrom(rndi(1));
@@ -31,8 +30,6 @@ for i=min(rndi):max(rndi)
 
     end
 end
-
-NewChrom
 
 if Representation==1
 	NewChrom=path2adj(NewChrom);
