@@ -1,14 +1,14 @@
 % Insertion mutation
 %
 
-function NewChrom = insertion(OldChrom,Representation);
+function NewChrom = insertion(OldChrom,Representation)
 
 NewChrom=OldChrom;
 
 if Representation==1 
 	NewChrom=adj2path(NewChrom);
 end
-
+NewChrom
 % select two positions in the tour
 
 rndi=zeros(1,2);
@@ -32,10 +32,12 @@ for i=min(rndi):max(rndi)
     end
 end
 
+NewChrom
 
 if Representation==1
 	NewChrom=path2adj(NewChrom);
 end
+
 
 
 % End of function

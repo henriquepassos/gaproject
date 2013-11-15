@@ -26,11 +26,7 @@ NewChrom=OldChrom;
 
 for r=1:rows
 	if rand<MutOpt
-        if(strcmp(MUT_F, 'insertion'))
-            NewChrom(r,:) = feval(MUT_F, OldChrom(r,:),2);
-        else
-            NewChrom(r,:) = feval(MUT_F, OldChrom(r,:),1);
-        end
+        NewChrom(r,:) = feval(MUT_F, OldChrom(r,:),1);
 	end
 end
 

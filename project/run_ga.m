@@ -41,6 +41,7 @@ function run_ga(x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, PR
         % evaluate initial population
         ObjV = tspfun(Chrom,Dist);
         best=zeros(1,MAXGEN);
+        fprintf('Using: %s and %s\n', CROSSOVER, MUTATION);
         % generational loop
         while gen<MAXGEN
             sObjV=sort(ObjV);
@@ -67,7 +68,7 @@ function run_ga(x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, PR
         	SelCh=select('sus', Chrom, FitnV, GGAP);
         	%recombine individuals (crossover)
             SelCh = recombin(CROSSOVER,SelCh,PR_CROSS);
-            SelCh=mutateTSP(MUTATION,SelCh,PR_MUT);
+            SelCh = mutateTSP(MUTATION,SelCh,PR_MUT);
             %evaluate offspring, call objective function
         	ObjVSel = tspfun(SelCh,Dist);
             %reinsert offspring into population

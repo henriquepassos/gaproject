@@ -22,14 +22,16 @@ for row=1:size(OldChrom)
 end
 
 if nargin < 2, XOVR = NaN; end
+   
 [rows,cols]=size(OldChrom);
-
+size(OldChrom)
    NewChrom = zeros(size(OldChrom));
     
    maxrows=rows;
    if rem(rows,2)~=0
 	   maxrows=maxrows-1;
    end
+   fprintf('joehoe');
    for row=1:2:maxrows
 	
      	% crossover of the two chromosomes
