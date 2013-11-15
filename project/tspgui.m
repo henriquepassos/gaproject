@@ -13,6 +13,7 @@ PR_CROSS=.95;     % probability of crossover
 PR_MUT=.05;       % probability of mutation
 LOCALLOOP=0;      % local loop removal
 CROSSOVER = 'xalt_edges';  % default crossover operator
+MUTATION = 'inversion';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % read an existing population
@@ -96,7 +97,8 @@ elitslidertxt = uicontrol(ph,'Style','text','String','% elite','Position',[0 80 
 elitslider = uicontrol(ph,'Style','slider','Max',100,'Min',0,'Value',round(ELITIST*100),'Sliderstep',[0.01 0.05],'Position',[130 80 150 20],'Callback',@elitslider_Callback);
 elitsliderv = uicontrol(ph,'Style','text','String',round(ELITIST*100),'Position',[280 80 50 20]);
 crossover = uicontrol(ph,'Style','popupmenu', 'String',{'xalt_edges','scxover'}, 'Value',1,'Position',[10 50 130 20],'Callback',@crossover_Callback);
-%inputbutton = uicontrol(ph,'Style','pushbutton','String','Input','Position',[55 10 70 30],'Callback',@inputbutton_Callback);
+mutation = uicontrol(ph,'Style','popupmenu', 'String',{'inversion','insertion'}, 'Value',1,'Position',[150 50 130 20],'Callback',@mutation_Callback);
+inputbutton = uicontrol(ph,'Style','pushbutton','String','Input','Position',[55 10 70 30],'Callback',@inputbutton_Callback);
 runbutton = uicontrol(ph,'Style','pushbutton','String','START','Position',[0 10 50 30],'Callback',@runbutton_Callback);
 
 set(fh,'Visible','on');
@@ -171,14 +173,20 @@ set(fh,'Visible','on');
         CROSSOVER = crossovers(crossover_value);
         CROSSOVER = CROSSOVER{1};
     end
+    function mutation_Callback(hObject,eventdata)
+        mutation_value = get(hObject,'Value');
+        mutations = get(hObject,'String');
+        MUTATION = mutations(mutation_value);
+        MUTATION = MUTATION{1};
+    end
     function runbutton_Callback(hObject,eventdata)
-        %set(ncitiesslider, 'Visible','off');
+        %set(ncitiesslider, 'Visiblecrossoverst','off');
         set(nindslider,'Visible','off');
         set(genslider,'Visible','off');
         set(mutslider,'Visible','off');
         set(crossslider,'Visible','off');
         set(elitslider,'Visible','off');
-        run_ga(x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, PR_MUT, CROSSOVER, LOCALLOOP, ah1, ah2, ah3);
+        run_ga(x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, PR_MUT, CROSSOVER, MUTATION, LOCALLOOP, ah1, ah2, ah3);
         end_run();
     end
     function inputbutton_Callback(hObject,eventdata)
