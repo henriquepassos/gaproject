@@ -14,6 +14,7 @@ PR_MUT=.05;       % probability of mutation
 LOCALLOOP=0;      % local loop removal
 CROSSOVER = 'xalt_edges';  % default crossover operator
 MUTATION = 'inversion';
+SELECTION = 'FPS';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % read an existing population
@@ -96,8 +97,9 @@ crosssliderv = uicontrol(ph,'Style','text','String',round(PR_CROSS*100),'Positio
 elitslidertxt = uicontrol(ph,'Style','text','String','% elite','Position',[0 80 130 20]);
 elitslider = uicontrol(ph,'Style','slider','Max',100,'Min',0,'Value',round(ELITIST*100),'Sliderstep',[0.01 0.05],'Position',[130 80 150 20],'Callback',@elitslider_Callback);
 elitsliderv = uicontrol(ph,'Style','text','String',round(ELITIST*100),'Position',[280 80 50 20]);
-crossover = uicontrol(ph,'Style','popupmenu', 'String',{'xalt_edges','scxover'}, 'Value',1,'Position',[10 50 130 20],'Callback',@crossover_Callback);
-mutation = uicontrol(ph,'Style','popupmenu', 'String',{'inversion','insertion'}, 'Value',1,'Position',[150 50 130 20],'Callback',@mutation_Callback);
+crossover = uicontrol(ph,'Style','popupmenu', 'String',{'xalt_edges','scxover'}, 'Value',1,'Position',[20 50 130 20],'Callback',@crossover_Callback);
+mutation = uicontrol(ph,'Style','popupmenu', 'String',{'inversion','insertion'}, 'Value',1,'Position',[160 50 130 20],'Callback',@mutation_Callback);
+selection = uicontrol(ph,'Style','popupmenu', 'String',{'FPS','tournament'}, 'Value',1,'Position',[300 50 130 20],'Callback',@selection_Callback);
 inputbutton = uicontrol(ph,'Style','pushbutton','String','Input','Position',[55 10 70 30],'Callback',@inputbutton_Callback);
 runbutton = uicontrol(ph,'Style','pushbutton','String','START','Position',[0 10 50 30],'Callback',@runbutton_Callback);
 
@@ -178,6 +180,12 @@ set(fh,'Visible','on');
         mutations = get(hObject,'String');
         MUTATION = mutations(mutation_value);
         MUTATION = MUTATION{1};
+    end
+    function selection_Callback(hObject,eventdata)
+        selection_value = get(hObject,'Value');
+        selections = get(hObject,'String');
+        SELECTION = selections(selection_value);
+        SELECTION = SELECTION{1};
     end
     function runbutton_Callback(hObject,eventdata)
         %set(ncitiesslider, 'Visiblecrossoverst','off');

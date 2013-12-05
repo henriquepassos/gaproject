@@ -58,7 +58,7 @@ function NewChrom = recombin(REC_F, Chrom, RecOpt, SUBPOP);
 % Select individuals of one subpopulation and call low level function
    NewChrom = [];
    for irun = 1:SUBPOP,
-      ChromSub = Chrom((irun-1)*Nind+1:irun*Nind,:);  
+      ChromSub = Chrom((irun-1)*Nind+1:irun*Nind,:); 
       NewChromSub = feval(REC_F, ChromSub, RecOpt);
       NewChrom=[NewChrom; NewChromSub];
    end
