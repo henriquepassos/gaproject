@@ -1,6 +1,6 @@
-% Sequential constructive crossover for TSP
+% Crossover for TSP
 %
-% Syntax:  NewChrom = seqconstxover(OldChrom, XOVR)
+% Syntax:  NewChrom = crossover_path(OldChrom, XOVR)
 %
 % Input parameters:
 %    OldChrom  - Matrix containing the chromosomes of the old
@@ -8,6 +8,7 @@
 %                (in any form, not necessarily real values).
 %    XOVR      - Probability of recombination occurring between pairs
 %                of individuals.
+%    Operator  - Crossover operator
 %
 % Output parameter:
 %    NewChrom  - Matrix containing the chromosomes of the population
@@ -15,30 +16,28 @@
 %                in the same format as OldChrom.
 
 
-function NewChrom = scxover(OldChrom, XOVR)
+function NewChrom = crossover_path(OldChrom, XOVR,Operator)
 
 for row=1:size(OldChrom)
 	OldChrom(row,:)=adj2path(OldChrom(row,:));
 end
 
 if nargin < 2, XOVR = NaN; end
-   
 [rows,cols]=size(OldChrom);
-size(OldChrom)
+
    NewChrom = zeros(size(OldChrom));
     
    maxrows=rows;
    if rem(rows,2)~=0
 	   maxrows=maxrows-1;
    end
-   fprintf('joehoe');
    for row=1:2:maxrows
 	
      	% crossover of the two chromosomes
    	% results in 2 offsprings
 	if rand<XOVR			% recombine with a given probability
-		NewChrom(row,:) =sequential_constructive_crossover([OldChrom(row,:);OldChrom(row+1,:)]);
-		NewChrom(row+1,:)=sequential_constructive_crossover([OldChrom(row+1,:);OldChrom(row,:)]);
+		NewChrom(row,:) =feval(Operator,[OldChrom(row,:);OldChrom(row+1,:)]);
+		NewChrom(row+1,:)=feval(Operator,[OldChrom(row+1,:);OldChrom(row,:)]);
 	else
 		NewChrom(row,:)=OldChrom(row,:);
 		NewChrom(row+1,:)=OldChrom(row+1,:);

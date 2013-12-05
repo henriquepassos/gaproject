@@ -1,4 +1,4 @@
-% Sequential constructive crossover for TSP
+% Order crossover for TSP
 %
 % Syntax:  NewChrom = seqconstxover(OldChrom, XOVR)
 %
@@ -15,8 +15,11 @@
 %                in the same format as OldChrom.
 
 
-function NewChrom = scxover(OldChrom, XOVR)
+function NewChrom = orderxover(OldChrom, XOVR)
 
-    NewChrom= crossover_path(OldChrom,XOVR,'sequential_constructive_crossover');
-   
+    NewChrom= crossover_path(OldChrom,XOVR,'order_crossover');
+
+
+
 end
+
