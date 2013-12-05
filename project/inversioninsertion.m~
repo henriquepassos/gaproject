@@ -1,11 +1,7 @@
-% low level function for TSP mutation
-% reciprocal exchange : two random cities in a tour are swapped
-% Representation is an integer specifying which encoding is used
-%	1 : adjacency representation
-%	2 : path representation
-% !! This is inversion, not reciprocal exchange
+% Inversion mutation: A subtour is randomly selected and inserted again in
+% reversed order in a random place.
 
-function NewChrom = inversion(OldChrom,Representation);
+function NewChrom = inversioninsertion(OldChrom,Representation);
 
 NewChrom=OldChrom;
 
@@ -22,7 +18,10 @@ while rndi(1)==rndi(2)
 end
 rndi = sort(rndi);
 
-NewChrom(rndi(1):rndi(2)) = NewChrom(rndi(2):-1:rndi(1));
+tmp = NewChrom(rndi(2):-1:rndi(1));
+NewChrom = [NewChrom(1:rndi(1)) tù^
+
+%NewChrom(rndi(1):rndi(2)) = NewChrom(rndi(2):-1:rndi(1));
 %buffer=NewChrom(rndi(1));
 %NewChrom(rndi(1))=NewChrom(rndi(2));
 %NewChrom(rndi(2))=buffer;
