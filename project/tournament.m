@@ -18,19 +18,18 @@
 
 function NewChrIx = tournament(FitnV,Nsel)
 
-    k = 2;
+    k = 5;
     NewChrIx = zeros(Nsel,1);
 
 % Identify the population size (Nind)
    [Nind,ans] = size(FitnV);
-
 % Perform tournament selection
    for i = 1 : Nsel,
        indices = randi(Nind, k, 1);
-       selIndex = null;
+       selIndex = -1;
        for j = 1 : k
-           if(selIndex == null || FitnV(indices(i)) > FitnV(selIndex))
-               selIndex = indices(i);
+           if(selIndex == -1 || FitnV(indices(j)) > FitnV(selIndex))
+               selIndex = indices(j);
            end
        end
        NewChrIx(i) = selIndex;

@@ -14,7 +14,7 @@ PR_MUT=.05;       % probability of mutation
 LOCALLOOP=0;      % local loop removal
 CROSSOVER = 'xalt_edges';  % default crossover operator
 MUTATION = 'inversion';
-SELECTION = 'FPS';
+SELECTION = 'sus';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % read an existing population
@@ -99,7 +99,7 @@ elitslider = uicontrol(ph,'Style','slider','Max',100,'Min',0,'Value',round(ELITI
 elitsliderv = uicontrol(ph,'Style','text','String',round(ELITIST*100),'Position',[280 80 50 20]);
 crossover = uicontrol(ph,'Style','popupmenu', 'String',{'xalt_edges','scxover'}, 'Value',1,'Position',[20 50 130 20],'Callback',@crossover_Callback);
 mutation = uicontrol(ph,'Style','popupmenu', 'String',{'inversion','insertion'}, 'Value',1,'Position',[160 50 130 20],'Callback',@mutation_Callback);
-selection = uicontrol(ph,'Style','popupmenu', 'String',{'FPS','tournament'}, 'Value',1,'Position',[300 50 130 20],'Callback',@selection_Callback);
+selection = uicontrol(ph,'Style','popupmenu', 'String',{'sus','proportionate','tournament'}, 'Value',1,'Position',[300 50 130 20],'Callback',@selection_Callback);
 inputbutton = uicontrol(ph,'Style','pushbutton','String','Input','Position',[55 10 70 30],'Callback',@inputbutton_Callback);
 runbutton = uicontrol(ph,'Style','pushbutton','String','START','Position',[0 10 50 30],'Callback',@runbutton_Callback);
 
@@ -194,7 +194,7 @@ set(fh,'Visible','on');
         set(mutslider,'Visible','off');
         set(crossslider,'Visible','off');
         set(elitslider,'Visible','off');
-        run_ga(x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, PR_MUT, CROSSOVER, MUTATION, LOCALLOOP, ah1, ah2, ah3);
+        run_ga(x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, PR_MUT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3);
         end_run();
     end
     function inputbutton_Callback(hObject,eventdata)
