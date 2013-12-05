@@ -16,9 +16,9 @@
 %                by calculating OldChrom(NewChrIx,:).
 
 
-function NewChrIx = tournament(FitnV,Nsel)
+function NewChrIx = tournament(FitnV,Nsel,k)
 
-    k = 5;
+    %k = 5;
     NewChrIx = zeros(Nsel,1);
 
 % Identify the population size (Nind)
