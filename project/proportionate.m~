@@ -1,0 +1,40 @@
+% proportionate.M          (proportionate sampling)
+%
+% This function performs selection with proportionate sampling.
+%
+% Syntax:  NewChrIx = porportionate(FitnV, Nsel)
+%
+% Input parameters:
+%    FitnV     - Column vector containing the fitness values of the
+%                individuals in the population.
+%    Nsel      - number of individuals to be selected
+%
+% Output parameters:
+%    NewChrIx  - column vector containing the indexes of the selected
+%                individuals relative to the original population, shuffled.
+%                The new population, ready for mating, can be obtained
+%                by calculating OldChrom(NewChrIx,:).
+
+function NewChrIx = proportionate(FitnV,Nsel)
+
+% Identify the population size (Nind)
+   [Nind,ans] = size(FitnV);
+   
+% perform roulette wheel
+   cumfit = cumsum(FitnV);
+   cumfit_normalized = cumfit / cumfit(Nind);
+   NewChrix = zeros(Nsel)
+   for i=1:NSel
+       index = rand;
+       diff = abs(cumfit_normalized-index);
+       
+       NewChrix(i)= find
+   end
+
+
+% Shuffle new population
+   [ans, shuf] = sort(rand(Nsel, 1));
+   NewChrIx = NewChrIx(shuf);
+
+end
+
