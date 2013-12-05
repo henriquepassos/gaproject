@@ -23,18 +23,13 @@ function NewChrIx = proportionate(FitnV,Nsel)
 % perform roulette wheel
    cumfit = cumsum(FitnV);
    cumfit_normalized = cumfit / cumfit(Nind);
-   NewChrix = zeros(Nsel)
-   for i=1:NSel
+   NewChrIx = zeros(Nsel)
+   for i=1:Nsel
        index = rand;
        diff = abs(cumfit_normalized-index);
-       
-       NewChrix(i)= find
+       [~, sel] = min(diff);
+       NewChrIx(i)= sel;
    end
-
-
-% Shuffle new population
-   [ans, shuf] = sort(rand(Nsel, 1));
-   NewChrIx = NewChrIx(shuf);
 
 end
 

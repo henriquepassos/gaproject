@@ -23,12 +23,12 @@ function NewChrIx = proportionate(FitnV,Nsel)
 % perform roulette wheel
    cumfit = cumsum(FitnV);
    cumfit_normalized = cumfit / cumfit(Nind);
-   NewChrix = zeros(Nsel)
-   for i=1:NSel
+   NewChrIx = zeros(Nsel,1);
+   for i=1:Nsel
        index = rand;
        diff = abs(cumfit_normalized-index);
-       [sel sel] = min(diff);
-       NewChrix(i)= sel
+       [~, sel] = min(diff);
+       NewChrIx(i)= sel;
    end
 
 end
