@@ -81,5 +81,5 @@ function best_result = run_ga_novisuals(x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_
         	gen=gen+1;
             
         end
-        best_result = best(MAXGEN);
+        best_result = best(gen+1);
 end
