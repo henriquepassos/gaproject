@@ -23,9 +23,9 @@ function script(DATASETS, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS
 figure;
 hold on;
 
-step = 0.2;
+step = 0.05;
 means = zeros(1/step+1,1);
-times = 5;
+times = 10;
 minis = zeros(3,1);
     
 for k = 1 : 3
@@ -35,7 +35,7 @@ for k = 1 : 3
 
     j = 1;
     for i = 0 : step : 1
-        means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, i, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
+        means(j) = run(times, x, y, NIND, MAXGEN, NVAR, i, STOP_PERCENTAGE, PR_CROSS, PR_MUT, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
         j = j + 1;
     end
 
@@ -58,7 +58,7 @@ for k = 1 : 3
             
 end
 
-xlabel('Mutation probability');
+xlabel('Elitism');
 ylabel('Performance');
 legend('rondrit016','rondrit018','rondrit023');
 
