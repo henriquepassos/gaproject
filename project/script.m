@@ -35,7 +35,11 @@ for k = 1 : 3
 
     j = 1;
     for i = 0 : step : 1
+<<<<<<< HEAD
         means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, i, 0.35, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
+=======
+        means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, 0.35, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
+>>>>>>> 512a21e9f2f631ea54581db7cf4fbf49dc11bb61
         j = j + 1;
     end
 
