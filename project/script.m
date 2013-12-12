@@ -20,15 +20,12 @@ function script(DATASETS, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS
 % ah1, ah2, ah3: axes handles to visualise tsp
 {DATASETS NIND MAXGEN NVAR ELITIST STOP_PERCENTAGE PR_CROSS PR_MUT OPT CROSSOVER MUTATION SELECTION LOCALLOOP}
 
-fig1 = figure;
-xlabel('Mutation probability');
-ylabel('Performance');
-legend('rondrit016','rondrit018','rondrit023');
+figure;
 hold on;
 
-means = zeros(21,1);
-times = 1;
 step = 0.2;
+means = zeros(1/step+1,1);
+times = 5;
 minis = zeros(3,1);
     
 for k = 1 : 3
@@ -46,20 +43,24 @@ for k = 1 : 3
         means = means / 3.35 - 1;
         [x y] = min(means);
         minis(k) = (y-1) * step;
-        plot(fig1, 0:0.05:1, means,'color','blue');
+        plot(0:step:1, means,'color','blue');
     elseif (k == 2)
         means = means / 2.973 - 1;
         [x y] = min(means);
         minis(k) = (y-1) * step;
-        plot(fig1, 0:0.05:1, means,'color','red');
+        plot(0:step:1, means,'color','red');
     else
         means = means / 3.2424 - 1;
         [x y] = min(means);
         minis(k) = (y-1) * step;
-        plot(fig1, 0:0.05:1, means,'color','green');
+        plot(0:step:1, means,'color','green');
     end
             
 end
+
+xlabel('Mutation probability');
+ylabel('Performance');
+legend('rondrit016','rondrit018','rondrit023');
 
 minis
 
