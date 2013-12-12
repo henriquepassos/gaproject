@@ -22,7 +22,7 @@ function Offspring=order_crossover(Parents)
         end
         for j=1:chromSize
             candidate = Parents(2,j);
-            if ismember(candidate,Offspring)
+            if ismembc(candidate,sort(Offspring))
                 continue;
             else
                 Offspring(i)=candidate;
