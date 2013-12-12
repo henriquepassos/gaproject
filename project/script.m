@@ -1,4 +1,4 @@
-function script(x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, PR_MUT, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3)
+function script(DATASETS, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, PR_MUT, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3)
 % usage: script(x, y, 
 %               NIND, MAXGEN, NVAR, 
 %               ELITIST, STOP_PERCENTAGE, 
@@ -18,16 +18,49 @@ function script(x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, PR
 % SELECTION: the selection operator
 % calculate distance matrix between each pair of cities
 % ah1, ah2, ah3: axes handles to visualise tsp
-{NIND MAXGEN NVAR ELITIST STOP_PERCENTAGE PR_CROSS PR_MUT OPT CROSSOVER MUTATION SELECTION LOCALLOOP}
+{DATASETS NIND MAXGEN NVAR ELITIST STOP_PERCENTAGE PR_CROSS PR_MUT OPT CROSSOVER MUTATION SELECTION LOCALLOOP}
 
-means = zeros(21);
-times = 5;
-j = 1;
-for i = 0 : 0.05 : 1
-    means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, i, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
+fig1 = figure;
+xlabel('Mutation probability');
+ylabel('Performance');
+legend('rondrit016','rondrit018','rondrit023');
+hold on;
+
+means = zeros(21,1);
+times = 1;
+step = 0.2;
+minis = zeros(3,1);
+    
+for k = 1 : 3
+    data = load(['datasets/' DATASETS{k}]);
+    x=data(:,1)/max([data(:,1);data(:,2)]);y=data(:,2)/max([data(:,1);data(:,2)]);
+    NVAR=size(data,1);
+
+    j = 1;
+    for i = 0 : step : 1
+        means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, i, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
+        j = j + 1;
+    end
+
+    if(k == 1)
+        means = means / 3.35 - 1;
+        [x y] = min(means);
+        minis(k) = (y-1) * step;
+        plot(fig1, 0:0.05:1, means,'color','blue');
+    elseif (k == 2)
+        means = means / 2.973 - 1;
+        [x y] = min(means);
+        minis(k) = (y-1) * step;
+        plot(fig1, 0:0.05:1, means,'color','red');
+    else
+        means = means / 3.2424 - 1;
+        [x y] = min(means);
+        minis(k) = (y-1) * step;
+        plot(fig1, 0:0.05:1, means,'color','green');
+    end
+            
 end
 
-plot(0:0.05:1, means);
-
+minis
 
 end
