@@ -23,7 +23,7 @@ function script(DATASETS, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS
 figure;
 hold on;
 
-step = 0.2;
+step = 0.05;
 means = zeros(1/step+1,1);
 times = 5;
 minis = zeros(3,1);
