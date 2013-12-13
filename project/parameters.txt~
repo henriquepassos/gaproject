@@ -1,17 +1,60 @@
-initieel
+initieel: orderxover
 --------
-times = 5
+times = 10
 step = 0.05
 mutation = 0.05
 crossover = 0.7667 (0.6 0.7 1)
 
+mutation = 0.05
+crossover = 0.8633
+
+mutation = 0.05
+crossover = 0.933 (0.9 0.9 1)
 
 iteratie 1
 ----------
 crossover = 0.7667
 mutation = 0.35 (0.5, 0.25, 0.3)
 
+crossover = 0.8633
+mutation = 0.25 (0.2 0.25 0.3)
+
+crossover = 0.933
+mutation = 0.2167 (0.1 0.3 0.25)
+
 iteratie 2
 ----------
 mutation = 0.35
 crossover = (0.85 0.05 0.45)
+
+mutation = 0.25
+crossover = (0.85 0.45 0.9)
+
+mutation = 0.2167
+crossover = (0.45 0.75
+
+
+
+
+iteratie 0: insertion
+---------------------
+times = 10
+step = 0.05
+
+crossover = 0.95
+mutation = 0.0833 (0.15 0 0.10)
+
+iteratie 1
+----------
+mutation = 0.0833
+crossover = 0.5 (0.6 0.4 0.5)
+
+iteratie 2
+----------
+crossover = 0.5
+mutation = 0.1667 (0.25 0.15 0.10)
+
+iteratie 3
+----------
+mutation = 0.1667
+crossover = 0.45 (0.6 0.35 0.4)

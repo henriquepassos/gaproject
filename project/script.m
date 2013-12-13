@@ -29,17 +29,13 @@ times = 10;
 minis = zeros(3,1);
     
 for k = 1 : 3
-    data = load(['datasets/' DATASETS{k}]);
+    data = load(['datasets/' DATASETS{k+3}]);
     x=data(:,1)/max([data(:,1);data(:,2)]);y=data(:,2)/max([data(:,1);data(:,2)]);
     NVAR=size(data,1);
 
     j = 1;
     for i = 0 : step : 1
-<<<<<<< HEAD
-        means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, i, 0.35, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
-=======
-        means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, 0.35, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
->>>>>>> 512a21e9f2f631ea54581db7cf4fbf49dc11bb61
+        means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, i, 0.2167, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
         j = j + 1;
     end
 
