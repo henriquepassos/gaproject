@@ -1,0 +1,25 @@
+initieel
+--------
+times = 5
+step = 0.05
+
+iteratie 1
+----------
+
+xover = 0.8667
+mutation = 0.8167 (0.7, 0.8, 0.95)
+
+iteratie 2
+----------
+mutation = 0.8167
+xover = 0.3 (0.2,0.35, 0.35)
+
+iteratie 3
+----------
+xover = 0.3
+mutation= 0.4833 (0.35,0.5,0.6)
+
+iteratie4
+---------
+mutation = 0.4833
+xover = 0.25(0.1,0.3,0.35)

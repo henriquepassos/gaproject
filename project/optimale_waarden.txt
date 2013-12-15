@@ -1,0 +1,3 @@
+rondrit25 = 4
+rondrit48 = 4.4? 
+rondrit50 = 5.9?
