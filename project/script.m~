@@ -23,7 +23,7 @@ function script(DATASETS, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS
 figure;
 hold on;
 
-step = 0.05;
+step = 1;
 means = zeros(1/step+1,1);
 times = 10;
 minis = zeros(3,1);
@@ -35,7 +35,8 @@ for k = 1 : 2
 
     j = 1;
     for i = 0 : step : 1
-        means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, i, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
+        if i=0
+            means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, i, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
         j = j + 1;
     end
 
