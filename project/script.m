@@ -23,30 +23,29 @@ function script(DATASETS, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS
 figure;
 hold on;
 
-step = 1;
+step = 0.05;
 means = zeros(1/step+1,1);
 times = 10;
 minis = zeros(3,1);
     
-for k = 1 : 2
-    data = load(['datasets/' DATASETS{k+5}]);
+for k = 1 : 3
+    data = load(['datasets/' DATASETS{k}]);
     x=data(:,1)/max([data(:,1);data(:,2)]);y=data(:,2)/max([data(:,1);data(:,2)]);
     NVAR=size(data,1);
 
     j = 1;
     for i = 0 : step : 1
-        if i=0
-            means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, PR_CROSS, i, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
+        means(j) = run(times, x, y, NIND, MAXGEN, NVAR, ELITIST, STOP_PERCENTAGE, i, 0.25, OPT, CROSSOVER, MUTATION, SELECTION, LOCALLOOP, ah1, ah2, ah3 );
         j = j + 1;
     end
 
     if(k == 1)
-        means = means / 5.9 - 1;
+        means = means / 3.35 - 1;
         [x y] = min(means);
         minis(k) = (y-1) * step;
         plot(0:step:1, means,'color','blue');
     elseif (k == 2)
-        means = means / 6.2 - 1;
+        means = means / 2.973 - 1;
         [x y] = min(means);
         minis(k) = (y-1) * step;
         plot(0:step:1, means,'color','red');
@@ -59,9 +58,9 @@ for k = 1 : 2
             
 end
 
-xlabel('Mutation probability');
+xlabel('Elitism');
 ylabel('Performance');
-legend('rondrit050','rondrit051');
+legend('rondrit016','rondrit018','rondrit023');
 
 minis
 

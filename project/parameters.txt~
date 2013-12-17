@@ -31,12 +31,12 @@ mutation = 0.25
 crossover = (0.85 0.45 0.9)
 
 mutation = 0.2167
-crossover = (0.45 0.75
+crossover = 0.65 (0.45 0.75 0.55)
 
 
 
 
-iteratie 0: insertion
+iteratie 0: insertion (xaltedges)
 ---------------------
 times = 10
 step = 0.05
@@ -58,3 +58,45 @@ iteratie 3
 ----------
 mutation = 0.1667
 crossover = 0.45 (0.6 0.35 0.4)
+
+
+
+iteratie 0: inversioninsertion (xaltedges)
+---------------------
+times = 10
+step = 0.05
+
+crossover = 0.95
+mutation = 0.1 (0.05 0.05 0.2)
+
+iteratie 1
+----------
+mutation = 0.1
+crossover = 0.4833 (0.5 0.55 0.4)
+
+iteratie 2
+----------
+crossover = 0.4833
+mutation = 
+
+
+
+iteratie 0: inversioni (xaltedges)
+---------------------
+times = 10
+step = 0.05
+
+crossover = 0.95
+mutation = 0.1 (0.05 0.05 0.2)
+
+iteratie 1
+----------
+mutation = 0.1
+crossover = 0.4833 (0.5 0.55 0.4)
+
+iteratie 2
+----------
+crossover = 0.4833
+mutation = 
+
+
